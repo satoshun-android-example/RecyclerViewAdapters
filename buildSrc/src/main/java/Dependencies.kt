@@ -22,9 +22,8 @@ object Libs {
   val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
   val cardview = "androidx.cardview:cardview:1.0.0"
 
-  val contentpager = "androidx.contentpager:contentpager:1.0.0-rc01"
-  val webkit = "androidx.webkit:webkit:1.0.0"
-  val media2 = "androidx.media2:media2:1.0.0-alpha03"
+  val epoxy = "com.airbnb.android:epoxy:3.0.0-rc1"
+  val epoxy_processor = "com.airbnb.android:epoxy-processor:3.0.0-rc1"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
