@@ -1,19 +1,15 @@
 object Vers {
   val compile_sdk = 28
-  val min_sdk = 24
+  val min_sdk = 25
   val target_sdk = 28
 
-  val kotlin = "1.2.71"
+  val kotlin = "1.3.0-rc-146"
   val couroutine = "0.26.1"
-
-  val navigation = "1.0.0-alpha06"
 }
 
 object Libs {
   val android_plugin = "com.android.tools.build:gradle:3.2.0"
   val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
-  val safeargs_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:${Vers.navigation}"
-  val versions_plugin = "com.github.ben-manes:gradle-versions-plugin:0.20.0"
 
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
   val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Vers.couroutine}"
@@ -32,9 +28,6 @@ object Libs {
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
-  val browser = "androidx.browser:browser:1.0.0"
-  val navigation = "android.arch.navigation:navigation-fragment-ktx:${Vers.navigation}"
-  val navigation_ui = "android.arch.navigation:navigation-ui-ktx:${Vers.navigation}"
 
   val room_common = "androidx.room:room-common:2.0.0"
   val room_runtime = "androidx.room:room-runtime:2.0.0"
