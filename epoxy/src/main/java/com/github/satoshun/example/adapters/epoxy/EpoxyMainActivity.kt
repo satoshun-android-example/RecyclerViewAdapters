@@ -7,7 +7,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.postDelayed
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyModel
@@ -16,6 +15,7 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
 import kotlinx.android.synthetic.main.main_act.*
+import kotlin.concurrent.thread
 
 class EpoxyMainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +26,13 @@ class EpoxyMainActivity : AppCompatActivity() {
     recycler.layoutManager = LinearLayoutManager(this)
     recycler.setControllerAndBuildModels(controller)
 
-    recycler.postDelayed(5000) {
-      controller.requestModelBuild()
+    thread {
+      while (true) {
+        Thread.sleep(2000)
+        recycler.post {
+          controller.requestModelBuild()
+        }
+      }
     }
   }
 }
@@ -67,12 +72,14 @@ class TestView(context: Context) : AppCompatTextView(context) {
 }
 
 fun testEpoxyModelGroup(): EpoxyModelGroup {
-  val models = (100..110).map {
-    TestViewModel_()
-        .id(it)
-        .textColor(Color.RED)
-        .name("test$it")
-  }
+  val models = (100..110)
+      .shuffled()
+      .map {
+        TestViewModel_()
+            .id(it)
+            .textColor(Color.RED)
+            .name("test$it")
+      }
   return SectionEpoxyModelGroup(R.layout.item_test, models)
 }
 
