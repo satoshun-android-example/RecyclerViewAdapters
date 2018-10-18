@@ -40,6 +40,8 @@ object Libs {
   val emoji_compat = "androidx.emoji:emoji-appcompat:1.0.0"
   val emoji_bundled = "androidx.emoji:emoji-bundled:1.0.0"
 
+  val javax = "javax.inject:javax.inject:1"
+
   val multidex = "androidx.multidex:multidex:2.0.0"
 
   val rxwebview = "com.github.satoshun.RxWebView:rxwebview-kotlin:2.3.0"
