@@ -1,6 +1,9 @@
 package com.github.satoshun.example.adapters.graywater
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,13 +17,22 @@ class GraywaterMainActivity : AppCompatActivity() {
     setContentView(R.layout.main_act)
 
     recycler.layoutManager = LinearLayoutManager(this)
-    recycler.adapter = TextAdapter()
+
+    val adapter = TextAdapter()
+    recycler.adapter = adapter
+    adapter.add(ItemModel.Text)
   }
 }
 
 class TextAdapter : GraywaterAdapter<ItemModel, RecyclerView.ViewHolder, TextBinder, Class<*>>() {
+  init {
+    register(TextViewHolderCreator(), TextViewHolder::class.java)
+    val textBinder = TextBinder()
+    register(ItemModel.Text::class.java, TextItemBinder(textBinder), null)
+  }
+
   override fun getModelType(model: ItemModel): Class<*> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return model.javaClass
   }
 }
 
@@ -28,30 +40,55 @@ sealed class ItemModel {
   object Text : ItemModel()
 }
 
-class TextBinder : GraywaterAdapter.Binder<ItemModel, RecyclerView.ViewHolder, RecyclerView.ViewHolder> {
+class TextBinder : GraywaterAdapter.Binder<ItemModel, RecyclerView.ViewHolder, TextViewHolder> {
   override fun prepare(
     model: ItemModel,
-    p1: MutableList<Provider<GraywaterAdapter.Binder<in ItemModel, RecyclerView.ViewHolder, out RecyclerView.ViewHolder>>>?,
-    p2: Int
+    data: MutableList<Provider<GraywaterAdapter.Binder<in ItemModel, RecyclerView.ViewHolder, out RecyclerView.ViewHolder>>>,
+    position: Int
   ) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
 
   override fun bind(
     model: ItemModel,
-    p1: RecyclerView.ViewHolder,
+    holder: TextViewHolder,
     p2: MutableList<Provider<GraywaterAdapter.Binder<in ItemModel, RecyclerView.ViewHolder, out RecyclerView.ViewHolder>>>,
     p3: Int,
-    p4: GraywaterAdapter.ActionListener<ItemModel, RecyclerView.ViewHolder, RecyclerView.ViewHolder>?
+    p4: GraywaterAdapter.ActionListener<ItemModel, RecyclerView.ViewHolder, TextViewHolder>?
   ) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    if (model == ItemModel.Text) {
+      holder.textView.text = "TEXT"
+    }
+  }
+
+  override fun unbind(p0: TextViewHolder) {
   }
 
   override fun getViewType(model: ItemModel): Int {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return R.layout.main_item
+  }
+}
+
+class TextItemBinder(
+  private val textBinder: TextBinder
+) : GraywaterAdapter.ItemBinder<ItemModel, RecyclerView.ViewHolder, TextBinder> {
+  override fun getBinderList(model: ItemModel, position: Int): MutableList<Provider<out TextBinder>> {
+    return mutableListOf(
+        Provider { textBinder },
+        Provider { textBinder }
+    )
+  }
+}
+
+class TextViewHolderCreator : GraywaterAdapter.ViewHolderCreator {
+  override fun create(parent: ViewGroup): TextViewHolder {
+    return TextViewHolder(GraywaterAdapter.inflate(parent, R.layout.main_item))
   }
 
-  override fun unbind(p0: RecyclerView.ViewHolder) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun getViewType(): Int {
+    return R.layout.main_item
   }
+}
+
+class TextViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+  val textView: TextView = view.findViewById(R.id.text)
 }
