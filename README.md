@@ -1,4 +1,7 @@
 # RecyclerView Adapter Samples
 
 [Epoxy](https://github.com/airbnb/epoxy)
-- todos
+- todo
+
+[MultiViewAdapter](https://github.com/DevAhamed/MultiViewAdapter)
+- todo
