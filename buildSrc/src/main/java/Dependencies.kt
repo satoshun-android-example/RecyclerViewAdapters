@@ -24,6 +24,8 @@ object Libs {
 
   val epoxy = "com.airbnb.android:epoxy:3.0.0-rc1"
   val epoxy_processor = "com.airbnb.android:epoxy-processor:3.0.0-rc1"
+  val multiviewadapter = "com.github.devahamed:multi-view-adapter:1.3.0"
+  val multiviewadapter_databinding = "com.github.devahamed:multi-view-adapter-databinding:1.3.0"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"

@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdkVersion Vers.compile_sdk
+  defaultConfig {
+    applicationId "com.github.satoshun.example.adapters.multiviewadapter"
+    minSdkVersion Vers.min_sdk
+    targetSdkVersion Vers.target_sdk
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation Libs.kotlin
+  implementation Libs.appcompat
+  implementation Libs.ktx
+  implementation Libs.constraintlayout
+
+  implementation Libs.recyclerview
+  implementation Libs.multiviewadapter
+
+  testImplementation 'junit:junit:4.12'
+}

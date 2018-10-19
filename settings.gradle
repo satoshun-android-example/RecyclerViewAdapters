@@ -1,2 +1,3 @@
 include ':epoxy'
 include ':graywater'
+include ':multiviewadapter'
