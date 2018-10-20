@@ -30,6 +30,9 @@ object Libs {
   val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
   val rendererrecyclerviewadapter = "com.github.vivchar:RendererRecyclerViewAdapter:2.6.0"
   val adapterdelegates = "com.hannesdorfmann:adapterdelegates4:4.0.0"
+  val anko = "org.jetbrains.anko:anko:0.10.7"
+  val anko_recyclerview = "org.jetbrains.anko:anko-recyclerview-v7:0.10.7"
+  val anko_coroutine = "org.jetbrains.anko:anko-recyclerview-v7-coroutines:0.10.7"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
