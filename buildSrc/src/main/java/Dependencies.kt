@@ -33,6 +33,10 @@ object Libs {
   val anko = "org.jetbrains.anko:anko:0.10.7"
   val anko_recyclerview = "org.jetbrains.anko:anko-recyclerview-v7:0.10.7"
   val anko_coroutine = "org.jetbrains.anko:anko-recyclerview-v7-coroutines:0.10.7"
+  val litho = "com.facebook.litho:litho-core:0.20.0"
+  val litho_widget = "com.facebook.litho:litho-widget:0.20.0"
+  val litho_annotations = "com.facebook.litho:litho-annotations:0.20.0"
+  val litho_processor = "com.facebook.litho:litho-processor:0.20.0"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"

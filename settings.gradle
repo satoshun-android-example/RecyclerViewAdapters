@@ -5,6 +5,7 @@ include ':rendererrecyclerviewadapter'
 include ':adapterdelegates'
 include ':groupie'
 include ':anko'
+include ':litho'
 
 include ':data'
 include ':common'
