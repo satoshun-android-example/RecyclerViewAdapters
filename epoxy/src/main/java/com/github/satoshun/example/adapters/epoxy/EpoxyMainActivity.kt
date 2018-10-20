@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.epoxy.EpoxyController
@@ -14,20 +13,12 @@ import com.airbnb.epoxy.EpoxyModelGroup
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
+import com.github.satoshun.example.adapters.data.User
 import com.github.satoshun.example.adapters.data.UserRepository
 import kotlinx.android.synthetic.main.main_act.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlin.concurrent.thread
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.launch
 
-class EpoxyMainActivity : AppCompatActivity(),
-    CoroutineScope {
-  private val job = Job()
-  override val coroutineContext: CoroutineContext
-    get() = Dispatchers.Main + job
-
+class EpoxyMainActivity : BaseActivity() {
   private val repository = UserRepository()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,34 +29,26 @@ class EpoxyMainActivity : AppCompatActivity(),
     recycler.layoutManager = LinearLayoutManager(this)
     recycler.setControllerAndBuildModels(controller)
 
-    thread {
-      while (true) {
-        Thread.sleep(2000)
-        recycler.post {
-          controller.requestModelBuild()
-        }
-      }
+    launch {
+      val users = repository.getUsers()
+      controller.models = users
+      controller.requestModelBuild()
     }
   }
 }
 
 class TestController : EpoxyController() {
+  var models: List<User> = emptyList()
+
   override fun buildModels() {
     add(
-        (0..10).map {
+        models.map {
           TestViewModel_()
-              .id(it)
+              .id(it.hashCode())
               .textColor(Color.BLACK)
-              .name("test$it")
+              .name("test${it.name}")
         }
     )
-    add(
-        TestViewModel_()
-            .id(12)
-            .textColor(Color.BLACK)
-            .name("test12")
-    )
-
     add(testEpoxyModelGroup())
   }
 }

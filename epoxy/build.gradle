@@ -23,6 +23,7 @@ android {
 
 dependencies {
   implementation project(":data")
+  implementation project(":common")
 
   implementation Libs.kotlin
   implementation Libs.appcompat
