@@ -4,68 +4,73 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewManager
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.satoshun.example.adapters.anko.databinding.MainActBinding
+import com.github.satoshun.example.adapters.data.User
+import com.github.satoshun.example.adapters.data.UserRepository
+import com.github.satoshun.example.adapters.epoxy.BaseActivity
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.padding
+import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textView
 import org.jetbrains.anko.verticalLayout
 import org.jetbrains.anko.wrapContent
 
-class AnkoMainActivity : AppCompatActivity() {
+class AnkoMainActivity : BaseActivity() {
+  private val repository = UserRepository()
+
   private lateinit var binding: MainActBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+    val adapter = MainAdapter()
     binding = DataBindingUtil.setContentView(this, R.layout.main_act)
     with(binding.recycler) {
       layoutManager = LinearLayoutManager(this@AnkoMainActivity)
-      adapter = MainAdapter(
-          listOf(
-              User(name = "tom"),
-              User(name = "ken")
-          )
-      )
+      this.adapter = adapter
+    }
+
+    launch {
+      val users = repository.getUsers()
+      adapter.users = users
+      adapter.notifyDataSetChanged()
     }
   }
 }
 
-data class User(
-  val name: String
-)
-
-class UserUI : AnkoComponent<ViewGroup> {
+class UserUI(viewType: Int) : AnkoComponent<ViewGroup> {
   override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui) {
-    verticalLayout {
-      lparams(matchParent, wrapContent)
-      padding = dip(16)
-      textView {
-        id = 10
-        layoutParams = LinearLayout.LayoutParams(matchParent, wrapContent)
-        textSize = 16f
-        textColor = Color.BLACK
-      }
+    userItem()
+  }
+
+  private fun ViewManager.userItem() = verticalLayout {
+    lparams(matchParent, wrapContent)
+    padding = dip(16)
+    textView {
+      id = 10
+      layoutParams = LinearLayout.LayoutParams(matchParent, wrapContent)
+      textSize = 16f
+      textColor = Color.BLACK
     }
   }
 }
 
-class MainAdapter(
-  private val users: List<User>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+  var users: List<User> = emptyList()
+
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-    return MainViewHolder(
-        UserUI().createView(AnkoContext.create(parent.context, parent))
-    )
+    return MainViewHolder(parent, UserUI(viewType))
   }
 
   override fun getItemCount(): Int {
@@ -78,4 +83,7 @@ class MainAdapter(
   }
 }
 
-class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class MainViewHolder(
+  parent: ViewGroup,
+  component: AnkoComponent<ViewGroup>
+) : RecyclerView.ViewHolder(component.createView(AnkoContext.create(parent.context, parent)))
