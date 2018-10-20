@@ -14,3 +14,7 @@
 
 [AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
 - todo
+
+[Groupie](https://github.com/lisawray/groupie)
+- todo
+
