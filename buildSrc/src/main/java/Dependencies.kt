@@ -3,12 +3,12 @@ object Vers {
   val min_sdk = 25
   val target_sdk = 28
 
-  val kotlin = "1.3.0-rc-146"
-  val couroutine = "0.26.1"
+  val kotlin = "1.3.0-rc-190"
+  val couroutine = "1.0.0-RC1"
 }
 
 object Libs {
-  val android_plugin = "com.android.tools.build:gradle:3.2.0"
+  val android_plugin = "com.android.tools.build:gradle:3.2.1"
   val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
 
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
@@ -26,6 +26,9 @@ object Libs {
   val epoxy_processor = "com.airbnb.android:epoxy-processor:3.0.0-rc1"
   val multiviewadapter = "com.github.devahamed:multi-view-adapter:1.3.0"
   val multiviewadapter_databinding = "com.github.devahamed:multi-view-adapter-databinding:1.3.0"
+  val groupie = "com.xwray:groupie:2.1.0"
+  val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
+  val rendererrecyclerviewadapter = "com.github.vivchar:RendererRecyclerViewAdapter:2.6.0"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
@@ -50,9 +53,6 @@ object Libs {
 
   val rxjava = "io.reactivex.rxjava2:rxjava:2.2.0"
   val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
-
-  val groupie = "com.xwray:groupie:2.1.0"
-  val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
 
   val android_annotation = "androidx.annotation:annotation:1.0.0"
 
