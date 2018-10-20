@@ -29,6 +29,7 @@ object Libs {
   val groupie = "com.xwray:groupie:2.1.0"
   val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
   val rendererrecyclerviewadapter = "com.github.vivchar:RendererRecyclerViewAdapter:2.6.0"
+  val adapterdelegates = "com.hannesdorfmann:adapterdelegates4:4.0.0"
 
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
