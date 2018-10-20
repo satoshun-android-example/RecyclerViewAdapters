@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,8 +50,8 @@ class UserUI : AnkoComponent<ViewGroup> {
       lparams(matchParent, wrapContent)
       padding = dip(16)
       textView {
+        id = 10
         layoutParams = LinearLayout.LayoutParams(matchParent, wrapContent)
-        text = "TEST"
         textSize = 16f
         textColor = Color.BLACK
       }
@@ -72,6 +73,8 @@ class MainAdapter(
   }
 
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    val user = users[position]
+    (holder as MainViewHolder).itemView.findViewById<TextView>(10).text = user.name
   }
 }
 

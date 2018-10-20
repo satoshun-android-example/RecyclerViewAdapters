@@ -5,3 +5,5 @@ include ':rendererrecyclerviewadapter'
 include ':adapterdelegates'
 include ':groupie'
 include ':anko'
+
+include ':data'

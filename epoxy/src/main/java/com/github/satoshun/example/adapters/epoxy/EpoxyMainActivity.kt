@@ -14,10 +14,22 @@ import com.airbnb.epoxy.EpoxyModelGroup
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
+import com.github.satoshun.example.adapters.data.UserRepository
 import kotlinx.android.synthetic.main.main_act.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlin.concurrent.thread
+import kotlin.coroutines.CoroutineContext
 
-class EpoxyMainActivity : AppCompatActivity() {
+class EpoxyMainActivity : AppCompatActivity(),
+    CoroutineScope {
+  private val job = Job()
+  override val coroutineContext: CoroutineContext
+    get() = Dispatchers.Main + job
+
+  private val repository = UserRepository()
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.main_act)
