@@ -11,3 +11,6 @@
 
 [RendererRecyclerViewAdapter](https://github.com/vivchar/RendererRecyclerViewAdapter)
 - todo
+
+[AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
+- todo
