@@ -32,6 +32,8 @@ dependencies {
   implementation Libs.recyclerview
   implementation Libs.litho
   implementation Libs.litho_widget
+  compileOnly Libs.litho_annotations
+  kapt Libs.litho_processor
 
   testImplementation 'junit:junit:4.12'
 }
