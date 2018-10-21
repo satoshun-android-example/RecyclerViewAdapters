@@ -18,5 +18,8 @@ dependencies {
   api Libs.coroutine
   api Libs.ui_coroutine
 
-  implementation Libs.ktx
+  api Libs.paging
+  api Libs.room_runtime
+  api Libs.room_common
+  kapt Libs.room_compiler
 }

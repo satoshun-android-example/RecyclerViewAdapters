@@ -13,14 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.satoshun.example.adapters.anko.databinding.MainActBinding
 import com.github.satoshun.example.adapters.data.User
 import com.github.satoshun.example.adapters.data.UserRepository
-import com.github.satoshun.example.adapters.epoxy.BaseActivity
+import com.github.satoshun.example.adapters.common.BaseActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.padding
-import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textView
 import org.jetbrains.anko.verticalLayout

@@ -10,7 +10,7 @@ import com.facebook.litho.widget.Recycler
 import com.facebook.litho.widget.RecyclerBinder
 import com.facebook.litho.widget.Text
 import com.github.satoshun.example.adapters.data.UserRepository
-import com.github.satoshun.example.adapters.epoxy.BaseActivity
+import com.github.satoshun.example.adapters.common.BaseActivity
 import kotlinx.coroutines.launch
 
 class LithoMainActivity : BaseActivity() {

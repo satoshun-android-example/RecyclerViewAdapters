@@ -8,7 +8,7 @@ object Vers {
 }
 
 object Libs {
-  val android_plugin = "com.android.tools.build:gradle:3.2.1"
+  val android_plugin = "com.android.tools.build:gradle:3.3.0-beta01"
   val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
 
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
@@ -22,8 +22,9 @@ object Libs {
   val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
   val cardview = "androidx.cardview:cardview:1.0.0"
 
-  val epoxy = "com.airbnb.android:epoxy:3.0.0-rc1"
-  val epoxy_processor = "com.airbnb.android:epoxy-processor:3.0.0-rc1"
+  val epoxy = "com.airbnb.android:epoxy:2.19.0"
+  val epoxy_processor = "com.airbnb.android:epoxy-processor:2.19.0"
+  val epoxy_paging = "com.airbnb.android:epoxy-paging:2.19.0"
   val multiviewadapter = "com.github.devahamed:multi-view-adapter:1.3.0"
   val multiviewadapter_databinding = "com.github.devahamed:multi-view-adapter-databinding:1.3.0"
   val groupie = "com.xwray:groupie:2.1.0"
@@ -41,9 +42,9 @@ object Libs {
   val material = "com.google.android.material:material:1.0.0"
   val paging = "androidx.paging:paging-runtime:2.0.0"
 
-  val room_common = "androidx.room:room-common:2.0.0"
-  val room_runtime = "androidx.room:room-runtime:2.0.0"
-  val room_compiler = "androidx.room:room-compiler:2.0.0"
+  val room_common = "androidx.room:room-common:2.1.0-alpha01"
+  val room_runtime = "androidx.room:room-runtime:2.1.0-alpha01"
+  val room_compiler = "androidx.room:room-compiler:2.1.0-alpha01"
 
   val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
   val livedata = "androidx.lifecycle:lifecycle-livedata:2.0.0"

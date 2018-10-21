@@ -32,6 +32,7 @@ dependencies {
 
   implementation Libs.recyclerview
   implementation Libs.epoxy
+  implementation Libs.epoxy_paging
   kapt Libs.epoxy_processor
 
   testImplementation 'junit:junit:4.12'

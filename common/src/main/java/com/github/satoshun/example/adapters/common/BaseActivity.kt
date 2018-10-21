@@ -1,4 +1,4 @@
-package com.github.satoshun.example.adapters.epoxy
+package com.github.satoshun.example.adapters.common
 
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
