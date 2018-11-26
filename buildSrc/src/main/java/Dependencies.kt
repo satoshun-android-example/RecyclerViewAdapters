@@ -25,19 +25,26 @@ object Libs {
   const val epoxy = "com.airbnb.android:epoxy:2.19.0"
   const val epoxy_processor = "com.airbnb.android:epoxy-processor:2.19.0"
   const val epoxy_paging = "com.airbnb.android:epoxy-paging:2.19.0"
+
   const val multiviewadapter = "com.github.devahamed:multi-view-adapter:1.3.0"
   const val multiviewadapter_databinding = "com.github.devahamed:multi-view-adapter-databinding:1.3.0"
+
   const val groupie = "com.xwray:groupie:2.1.0"
   const val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
+
   const val rendererrecyclerviewadapter = "com.github.vivchar:RendererRecyclerViewAdapter:2.6.0"
+
   const val adapterdelegates = "com.hannesdorfmann:adapterdelegates4:4.0.0"
+
   const val anko = "org.jetbrains.anko:anko:0.10.7"
   const val anko_recyclerview = "org.jetbrains.anko:anko-recyclerview-v7:0.10.7"
   const val anko_coroutine = "org.jetbrains.anko:anko-recyclerview-v7-coroutines:0.10.7"
+
   const val litho = "com.facebook.litho:litho-core:0.20.0"
   const val litho_widget = "com.facebook.litho:litho-widget:0.20.0"
   const val litho_annotations = "com.facebook.litho:litho-annotations:0.20.0"
   const val litho_processor = "com.facebook.litho:litho-processor:0.20.0"
+  const val soloader = "com.facebook.soloader:soloader:0.5.1"
 
   const val material = "com.google.android.material:material:1.0.0"
   const val paging = "androidx.paging:paging-runtime:2.0.0"
