@@ -52,10 +52,10 @@ class EpoxyMainActivity : BaseActivity() {
     }
 
     val database = Room
-        .databaseBuilder(this, MyDatabase::class.java, "database")
-        .build()
+      .databaseBuilder(this, MyDatabase::class.java, "database")
+      .build()
     val user2 = LivePagedListBuilder(database.author().getAuthors(), 10)
-        .build()
+      .build()
     user2.observe(this, Observer {
       pagingController.submitList(it)
     })
@@ -74,29 +74,29 @@ class TestController : EpoxyController() {
 
   override fun buildModels() {
     add(
-        models.map {
-          TestViewModel_()
-              .id(it.hashCode())
-              .textColor(Color.BLACK)
-              .name("test${it.name}")
-        }
+      models.map {
+        TestViewModel_()
+          .id(it.hashCode())
+          .textColor(Color.BLACK)
+          .name("test${it.name}")
+      }
     )
     add(testEpoxyModelGroup())
   }
 }
 
 class TestPagingController : PagedListEpoxyController<User2>(
-    modelBuildingHandler = EpoxyAsyncUtil.getAsyncBackgroundHandler()
+  modelBuildingHandler = EpoxyAsyncUtil.getAsyncBackgroundHandler()
 ) {
   override fun buildItemModel(currentPosition: Int, item: User2?): EpoxyModel<*> {
     return if (item == null) {
       TestViewModel_()
-          .id(currentPosition)
+        .id(currentPosition)
     } else {
       TestViewModel_()
-          .id(currentPosition)
-          .textColor(Color.RED)
-          .name(item.name)
+        .id(currentPosition)
+        .textColor(Color.RED)
+        .name(item.name)
     }
   }
 }
@@ -116,13 +116,13 @@ class TestView(context: Context) : AppCompatTextView(context) {
 
 fun testEpoxyModelGroup(): EpoxyModelGroup {
   val models = (100..110)
-      .shuffled()
-      .map {
-        TestViewModel_()
-            .id(it)
-            .textColor(Color.RED)
-            .name("test$it")
-      }
+    .shuffled()
+    .map {
+      TestViewModel_()
+        .id(it)
+        .textColor(Color.RED)
+        .name("test$it")
+    }
   return SectionEpoxyModelGroup(R.layout.item_test, models)
 }
 

@@ -3,12 +3,12 @@ object Vers {
   const val min_sdk = 25
   const val target_sdk = 28
 
-  const val kotlin = "1.3.0"
-  const val couroutine = "1.0.0"
+  const val kotlin = "1.3.11"
+  const val couroutine = "1.0.1"
 }
 
 object Libs {
-  const val android_plugin = "com.android.tools.build:gradle:3.2.1"
+  const val android_plugin = "com.android.tools.build:gradle:3.4.0-alpha07"
   const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
 
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
@@ -22,15 +22,16 @@ object Libs {
   const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
   const val cardview = "androidx.cardview:cardview:1.0.0"
 
-  const val epoxy = "com.airbnb.android:epoxy:2.19.0"
-  const val epoxy_processor = "com.airbnb.android:epoxy-processor:2.19.0"
-  const val epoxy_paging = "com.airbnb.android:epoxy-paging:2.19.0"
+  private const val vepoxy = "3.1.0"
+  const val epoxy = "com.airbnb.android:epoxy:$vepoxy"
+  const val epoxy_processor = "com.airbnb.android:epoxy-processor:$vepoxy"
+  const val epoxy_paging = "com.airbnb.android:epoxy-paging:$vepoxy"
 
   const val multiviewadapter = "com.github.devahamed:multi-view-adapter:1.3.0"
   const val multiviewadapter_databinding = "com.github.devahamed:multi-view-adapter-databinding:1.3.0"
 
-  const val groupie = "com.xwray:groupie:2.1.0"
-  const val groupie_databinding = "com.xwray:groupie-databinding:2.1.0"
+  const val groupie = "com.xwray:groupie:2.3.0"
+  const val groupie_databinding = "com.xwray:groupie-databinding:2.3.0"
 
   const val rendererrecyclerviewadapter = "com.github.vivchar:RendererRecyclerViewAdapter:2.6.0"
 
