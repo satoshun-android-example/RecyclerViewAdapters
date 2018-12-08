@@ -1,5 +1,6 @@
 package com.github.satoshun.example.adapters.data
 
+import android.content.Context
 import androidx.paging.DataSource
 import androidx.room.ColumnInfo
 import androidx.room.Dao
@@ -8,6 +9,7 @@ import androidx.room.Entity
 import androidx.room.Insert
 import androidx.room.PrimaryKey
 import androidx.room.Query
+import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Entity(tableName = "users2")
@@ -17,10 +19,10 @@ data class User2(
 )
 
 @Database(
-    entities = [
-      User2::class
-    ],
-    version = 1
+  entities = [
+    User2::class
+  ],
+  version = 1
 )
 abstract class MyDatabase : RoomDatabase() {
   abstract fun author(): User2Dao
@@ -33,4 +35,10 @@ interface User2Dao {
 
   @Query("select * FROM users2")
   fun getAuthors(): DataSource.Factory<Int, User2>
+}
+
+fun createDatabase(context: Context): MyDatabase {
+  return Room
+    .inMemoryDatabaseBuilder(context, MyDatabase::class.java)
+    .build()
 }

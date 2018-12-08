@@ -1,23 +1,13 @@
 package com.github.satoshun.example.adapters.epoxy
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import androidx.annotation.ColorInt
-import androidx.appcompat.widget.AppCompatTextView
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.Observer
 import androidx.paging.LivePagedListBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
-import com.airbnb.epoxy.EpoxyAsyncUtil
-import com.airbnb.epoxy.EpoxyModel
-import com.airbnb.epoxy.ModelProp
-import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.TextProp
-import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.github.satoshun.example.adapters.common.BaseActivity
-import com.github.satoshun.example.adapters.data.MyDatabase
 import com.github.satoshun.example.adapters.data.User2
+import com.github.satoshun.example.adapters.data.createDatabase
 import kotlinx.android.synthetic.main.main_act.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -31,10 +21,10 @@ class EpoxyPagingMainActivity : BaseActivity() {
     val pagingController = TestPagingController()
     recycler.adapter = pagingController.adapter
     recycler.layoutManager = LinearLayoutManager(this)
+    val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_fall_down)
+    recycler.layoutAnimation = animation
 
-    val database = Room
-      .databaseBuilder(this, MyDatabase::class.java, "database")
-      .build()
+    val database = createDatabase(this)
     val users = LivePagedListBuilder(database.author().getAuthors(), 10)
       .build()
     users.observe(this, Observer {
@@ -43,38 +33,9 @@ class EpoxyPagingMainActivity : BaseActivity() {
     launch(Dispatchers.IO) {
       var i = 0
       while (true) {
-        delay(3000)
-        database.author().insert(User2(name = "${i++}"))
+        delay(1000)
+        database.author().insert(User2(name = "test${i++}"))
       }
     }
-  }
-}
-
-class TestPagingController : PagedListEpoxyController<User2>(
-  modelBuildingHandler = EpoxyAsyncUtil.getAsyncBackgroundHandler()
-) {
-  override fun buildItemModel(currentPosition: Int, item: User2?): EpoxyModel<*> {
-    return if (item == null) {
-      TestViewModel_()
-        .id(currentPosition)
-    } else {
-      TestViewModel_()
-        .id(currentPosition)
-        .textColor(Color.RED)
-        .name(item.name)
-    }
-  }
-}
-
-@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
-class TestView(context: Context) : AppCompatTextView(context) {
-  @TextProp
-  fun name(name: CharSequence) {
-    text = name
-  }
-
-  @ModelProp
-  fun textColor(@ColorInt color: Int) {
-    setTextColor(color)
   }
 }
