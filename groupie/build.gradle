@@ -9,13 +9,6 @@ android {
     targetSdkVersion Vers.target_sdk
     versionCode 1
     versionName "1.0"
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-    }
   }
   dataBinding {
     enabled = true
@@ -23,14 +16,16 @@ android {
 }
 
 dependencies {
+  implementation project(":data")
+  implementation project(":common")
+
   implementation Libs.kotlin
   implementation Libs.appcompat
   implementation Libs.ktx
   implementation Libs.constraintlayout
 
   implementation Libs.recyclerview
+
   implementation Libs.groupie
   implementation Libs.groupie_databinding
-
-  testImplementation 'junit:junit:4.12'
 }
