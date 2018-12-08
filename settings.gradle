@@ -1,4 +1,5 @@
-include ':epoxy'
+include ':epoxy:epoxy-basic'
+
 include ':graywater'
 include ':multiviewadapter'
 include ':rendererrecyclerviewadapter'
