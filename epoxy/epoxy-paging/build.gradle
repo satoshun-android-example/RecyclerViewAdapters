@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Vers.compile_sdk
+
+  defaultConfig {
+    applicationId "com.github.satoshun.example.adapters.epoxy"
+    minSdkVersion Vers.min_sdk
+    targetSdkVersion Vers.target_sdk
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+dependencies {
+  implementation project(":data")
+  implementation project(":common")
+
+  implementation Libs.kotlin
+  implementation Libs.appcompat
+  implementation Libs.ktx
+  implementation Libs.constraintlayout
+
+  implementation Libs.recyclerview
+
+  implementation Libs.epoxy
+  implementation Libs.epoxy_paging
+  kapt Libs.epoxy_processor
+}
