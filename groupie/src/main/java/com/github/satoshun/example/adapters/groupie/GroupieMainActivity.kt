@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.satoshun.example.adapters.common.BaseActivity
 import com.github.satoshun.example.adapters.data.UserRepository
 import com.github.satoshun.example.adapters.groupie.databinding.MainActBinding
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GroupieMainActivity : BaseActivity() {
@@ -24,6 +25,9 @@ class GroupieMainActivity : BaseActivity() {
       while (true) {
         val users = repository.getUsers()
         adapter.addUsers(users)
+
+        delay(2000)
+        adapter.shuffle()
       }
     }
   }
