@@ -22,4 +22,6 @@ dependencies {
   api Libs.room_runtime
   api Libs.room_common
   kapt Libs.room_compiler
+
+  implementation Libs.coroutine_auto_dispose
 }

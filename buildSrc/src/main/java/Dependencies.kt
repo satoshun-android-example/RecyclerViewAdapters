@@ -4,11 +4,11 @@ object Vers {
   const val target_sdk = 28
 
   const val kotlin = "1.3.11"
-  const val couroutine = "1.0.1"
+  const val couroutine = "1.1.0"
 }
 
 object Libs {
-  const val android_plugin = "com.android.tools.build:gradle:3.4.0-alpha07"
+  const val android_plugin = "com.android.tools.build:gradle:3.4.0-alpha10"
   const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
 
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
@@ -19,7 +19,7 @@ object Libs {
 
   const val appcompat = "androidx.appcompat:appcompat:1.0.0"
   const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
-  const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
+  const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-alpha3"
   const val cardview = "androidx.cardview:cardview:1.0.0"
 
   private const val vepoxy = "3.1.0"
@@ -70,6 +70,8 @@ object Libs {
 
   const val rxjava = "io.reactivex.rxjava2:rxjava:2.2.0"
   const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
+
+  const val coroutine_auto_dispose = "com.github.satoshun.coroutine.autodispose:autodispose:0.1.1"
 
   const val android_annotation = "androidx.annotation:annotation:1.0.0"
 
